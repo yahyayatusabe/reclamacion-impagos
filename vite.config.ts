@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         privacidad: resolve(__dirname, "privacidad.html"),
+        guia: resolve(__dirname, "reclamar-factura-impagada.html"),
       },
     },
   },
