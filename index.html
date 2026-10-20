@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora de intereses de demora 2026 · Reclama tus facturas impagadas</title>
+<meta name="description" content="Calcula gratis los intereses de demora y los 40 € de costes de cobro que puedes reclamar a un cliente que no paga una factura. Ley 3/2004, tipos 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚖️%3C/text%3E%3C/svg%3E">
+<script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+<main>
+  <h1>¿Cuánto te debe ya ese cliente que no paga?</h1>
+  <p class="lead">Calcula los intereses de demora y los 40 € por factura que la ley te permite reclamar a empresas y autónomos. Gratis y sin registro.</p>
+
+  <section class="sheet" aria-labelledby="calc-title">
+    <h2 id="calc-title">Liquidación de la deuda</h2>
+    <div class="grid">
+      <div><label for="imp">Importe total adeudado (€)</label><input id="imp" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1500"></div>
+      <div><label for="nf">Facturas impagadas</label><input id="nf" type="number" min="1" step="1" value="1" inputmode="numeric"></div>
+      <div><label for="ven">Fecha de vencimiento</label><input id="ven" type="date"></div>
+      <div><label for="hoy">Calcular hasta</label><input id="hoy" type="date"></div>
+      <div class="full"><label for="man">Tipo anual pactado (%), opcional</label><input id="man" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Vacío para usar el tipo legal"><p class="hint">Si tu contrato fija otro tipo, se aplicará a todo el periodo.</p></div>
+    </div>
+    <button id="go" type="button">Calcular deuda</button>
+    <div id="out" class="receipt" aria-live="polite" hidden></div>
+  </section>
+
+  <section>
+    <h2>Cómo se calcula</h2>
+    <ul>
+      <li>El interés legal es el tipo del BCE más ocho puntos y cambia cada semestre: 10,40 % en el segundo semestre de 2026 y 10,15 % en el primero.</li>
+      <li>Corre desde el día siguiente al vencimiento, sin necesidad de reclamarlo antes, y es interés simple sobre el importe adeudado.</li>
+      <li>Puedes reclamar además 40 € por factura en concepto de costes de cobro.</li>
+      <li>Si el retraso cruza un cambio de semestre, el periodo se divide en tramos y cada uno usa su tipo.</li>
+    </ul>
+  </section>
+
+  <section class="soon" aria-labelledby="soon-title">
+    <h2 id="soon-title">Estamos preparando tu reclamación lista para enviar</h2>
+    <p>Un asistente que redacta el burofax o el escrito de reclamación con tus datos, calcula la deuda y te deja preparado el dossier para el procedimiento monitorio. La primera reclamación será gratis.</p>
+    <form name="waitlist" id="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="waitlist">
+      <p class="trap"><label>No rellenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="inline">
+        <div><label for="email">Tu correo electrónico</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="nombre@ejemplo.com"></div>
+        <button type="submit">Avisadme cuando esté listo</button>
+      </div>
+      <p id="wl-status" class="hint" role="status"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>Herramienta informativa; no es asesoramiento jurídico. Aplica a operaciones comerciales entre empresas, autónomos y Administraciones, no a consumidores. Revisa las condiciones de tu contrato y consulta a un profesional antes de iniciar acciones judiciales.</p>
+  </footer>
+</main>
+</body>
+</html>
