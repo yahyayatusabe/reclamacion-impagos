@@ -32,5 +32,8 @@ ul{padding-left:20px;margin:0}li{margin-bottom:8px}
 .inline>div{flex:1 1 220px}
 .inline button{margin-top:0}
 .trap{position:absolute;left:-9999px}
+a{color:var(--accent)}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;color:var(--ink);margin:14px 0 0}
+.check input{width:auto;margin-top:5px}
 footer{margin-top:44px;font-size:.8rem;color:var(--mute)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

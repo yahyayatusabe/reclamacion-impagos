@@ -1,6 +1,12 @@
 import "./style.css";
 import { calcular, labelSemester } from "./calc";
 
+declare global {
+  interface Window {
+    umami?: { track: (name: string) => void };
+  }
+}
+
 const eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
 const pct = new Intl.NumberFormat("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -52,6 +58,7 @@ el("go").addEventListener("click", () => {
     out.append(note(res.error));
     return;
   }
+  window.umami?.track("calcular");
   const principal = res.total - res.interest - res.compensation;
   out.append(row("Principal", eur.format(principal)));
   for (const s of res.segments) {
@@ -91,6 +98,7 @@ form.addEventListener("submit", async (e) => {
       body,
     });
     if (!r.ok) throw new Error(String(r.status));
+    window.umami?.track("lista-espera");
     form.reset();
     status.textContent = "Listo, te avisaremos en cuanto esté disponible.";
   } catch {
